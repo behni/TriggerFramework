@@ -20,5 +20,5 @@ public abstract with sharing class Process implements IProcess {
 
       public virtual List<SObject> returnScope() {
           return newList;
-	}
+      }
 }
