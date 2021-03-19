@@ -7,7 +7,7 @@
 </a>
 
 ## Intruduction
-The framework provides an easy configuration of you companies trigger environments. It solves all best practice pattern and gives the developer an easy possibility, to add business logic to the environment over simple configuration. The only think which the developer must make sure is to add the trigger for the particular object with all events, pass the handler class and implement the business logic in an separate apex class, which implements an abstract class. The developer has then the possibility, to control all the trigger logic of the custom object "Trigger", which needs the class name of the apex class and the object name. The complete event configuration is happening then over custom metadata.
+The framework provides an easy configuration of your companies trigger environments. It solves all best practice pattern and gives the developer an easy possibility, to add business logic to the environment over simple configuration. The only think which the developer must make sure is to add the trigger for the particular object with all events, pass the handler class and implement the business logic in an separate apex class, which implements the handler interface. The developer has then the possibility, to control all the trigger logic of the custom metadata, which needs the class name of the apex class and the object name. The complete event configuration is happening then over custom metadata.
 
 ## Summary
 This framework provides an easy way to handle the complete apex trigger environment in Salesforce over custom objects. The framework handles all best practises, which are recommended by Salesforce:
