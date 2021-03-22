@@ -39,7 +39,7 @@ trigger TriggerUnitTestTrigger on TriggerUnitTest__c (
 ```
 
 Implement the business logic and pass it to the framework.
-To access records in after context, use newList or newMap, for example:
+To access records in after context (also before update), use newList or newMap, for example:
 ```java
 public class TriggerUnitTestAfter extends Process {
   public override IProcess run() {
@@ -50,10 +50,10 @@ public class TriggerUnitTestAfter extends Process {
   }
   
   private void cloneItem() {
-    //holds the after context records in a list
+    //holds the after context records and bafore update in a list
     List<TriggerUnitTest__c> newObjList = (List<TriggerUnitTest__c>) newList;
 
-    //holds ther after context records in a map
+    //holds ther after context and before update records in a map
     Map<Id, TriggerUnitTest__c> newObjMap = (Map<Id, TriggerUnitTest__c>) newMap;
       
     TriggerUnitTest__c cloneItem = newObjList.get(0).clone();
@@ -63,7 +63,7 @@ public class TriggerUnitTestAfter extends Process {
 ```
 Consider that newMap is only available in before update, after insert, after update, and after undelete triggers.
 
-To access records in before context, use newList or newMap to assign records and oldList and oldMap to fetch before records, for example:
+To access records in before context, use newList or newMap to assign records and oldList and oldMap to fetch before records in an after context or before update, for example:
 ```java
 public class TriggerUnitTestBefore extends Process {
   public override IProcess run() {
@@ -74,13 +74,13 @@ public class TriggerUnitTestBefore extends Process {
   }
   
   private void setBefore() {
-    //holds before records in a List
+    //holds before update and after context trigger records in a list
     List<TriggerUnitTest__c> oldObjList = (List<TriggerUnitTest__c>) oldList;
       
-    //holds before records in a map
+    //holds before records in a map (only possible for after triggers and before update triggers)
     Map<Id, TriggerUnitTest__c> oldObjMap = (Map<Id, TriggerUnitTest__c>) oldMap;
       
-    //sets records in before context to be avaliable in new context (in newList)
+    //sets records in before context to be avaliable in new context (in before context only newList/newMap)
     for(TriggerUnitTest__c record : (List<TriggerUnitTest__c>) newList) {
         record.BeforeCheck__c = true;
     }
