@@ -51,12 +51,12 @@ public class TriggerUnitTestAfter extends Process {
   
   private void cloneItem() {
     //holds the after context records in a list
-    List<TriggerUnitTest__c> objList = (List<TriggerUnitTest__c>) newList;
+    List<TriggerUnitTest__c> newObjList = (List<TriggerUnitTest__c>) newList;
 
     //holds ther after context records in a map
-    Map<Id, TriggerUnitTest__c> objMap = (Map<Id, TriggerUnitTest__c>) newMap;
+    Map<Id, TriggerUnitTest__c> newObjMap = (Map<Id, TriggerUnitTest__c>) newMap;
       
-    TriggerUnitTest__c cloneItem = objList.get(0).clone();
+    TriggerUnitTest__c cloneItem = newObjList.get(0).clone();
     INSERT cloneItem;
   }
 }
@@ -75,14 +75,14 @@ public class TriggerUnitTestBefore extends Process {
   
   private void setBefore() {
     //holds before records in a List
-    List<TriggerUnitTest__c> objList = (List<TriggerUnitTest__c>) oldList;
+    List<TriggerUnitTest__c> oldObjList = (List<TriggerUnitTest__c>) oldList;
       
     //holds before records in a map
-    Map<Id, TriggerUnitTest__c> objMap = (Map<Id, TriggerUnitTest__c>) oldMap;
+    Map<Id, TriggerUnitTest__c> oldObjMap = (Map<Id, TriggerUnitTest__c>) oldMap;
       
-    //sets records in before context to be avaliable in new context
+    //sets records in before context to be avaliable in new context (in newList)
     for(TriggerUnitTest__c record : (List<TriggerUnitTest__c>) newList) {
-          record.BeforeCheck__c = true;
+        record.BeforeCheck__c = true;
     }
   }
 }
