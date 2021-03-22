@@ -1,7 +1,7 @@
 @isTest
 public class TriggerHandlerTest {
     static testMethod void afterAndBeforeInsert() {
-		TriggerUnitTest__c uTest = new TriggerUnitTest__c();
+	TriggerUnitTest__c uTest = new TriggerUnitTest__c();
         
         Test.startTest();
         INSERT uTest;
@@ -12,11 +12,11 @@ public class TriggerHandlerTest {
     }
     
     static testMethod void afterAndBeforeUpdate() {
-		TriggerUnitTest__c uTest = new TriggerUnitTest__c();
+	TriggerUnitTest__c uTest = new TriggerUnitTest__c();
         INSERT uTest; 
         
         Test.startTest();
-		UPDATE uTest;
+	UPDATE uTest;
         Test.stopTest();
         
         List<TriggerUnitTest__c> records = [Select Id From TriggerUnitTest__c];
@@ -24,7 +24,7 @@ public class TriggerHandlerTest {
     }
     
     static testMethod void afterAndBeforeDelete() {
-		TriggerUnitTest__c uTest = new TriggerUnitTest__c();
+	TriggerUnitTest__c uTest = new TriggerUnitTest__c();
         INSERT uTest;
         
         Test.startTest();
@@ -36,12 +36,12 @@ public class TriggerHandlerTest {
     }
     
     static testMethod void afterAndBeforeUndelete() {
-		TriggerUnitTest__c uTest = new TriggerUnitTest__c();
+	TriggerUnitTest__c uTest = new TriggerUnitTest__c();
         INSERT uTest;
         DELETE uTest;
         
         Test.startTest();
-		UNDELETE uTest;
+	UNDELETE uTest;
         Test.stopTest();
         
         List<TriggerUnitTest__c> records = [Select Id From TriggerUnitTest__c];
