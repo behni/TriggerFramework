@@ -50,7 +50,7 @@ public class TriggerUnitTestAfter extends Process {
   }
   
   private void cloneItem() {
-    //holds the after context records and bafore update in a list
+    //holds the after context records and records in before update in a list
     List<TriggerUnitTest__c> newObjList = (List<TriggerUnitTest__c>) newList;
 
     //holds ther after context and before update records in a map
