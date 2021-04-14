@@ -89,6 +89,25 @@ public class TriggerUnitTestBefore extends Process {
 ```
 Consider that oldMap is only available in update and delete triggers.
 
+You can also read out the event directly in the handler class to dispatch related behaviours:
+
+```java
+public class TriggerUnitTestBefore extends Process {
+  public override IProcess run() {
+    system.debug(event);
+    
+    /* String which contains either
+    * beforeInsert, beforeUpdate, beforeDelete
+    * afterInsert, afterUpdate, afterDelete, afterUndelete
+    * please consider the strings are case sensitive
+    *
+    */
+  
+    return this;
+  }
+}
+```
+
 Create a new record under custom Metadata Trigger Definitions:
 * Class Name: TriggerUnitTestAfter
 * Object: TriggerUnitTest__c
