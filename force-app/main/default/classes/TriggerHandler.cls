@@ -26,7 +26,8 @@ public class TriggerHandler {
       }
 
       public void manage() {
-            List<TriggerDefinition__mdt> foundTriggers = queryConfiguration.getTrigger(sObjectType, getEvent());
+          	String event = getEvent();
+            List<TriggerDefinition__mdt> foundTriggers = queryConfiguration.getTrigger(sObjectType, event);
             if(foundTriggers != null) {
                   for(TriggerDefinition__mdt def : foundTriggers) {
                    IProcess process = getInstance(def);
@@ -40,15 +41,16 @@ public class TriggerHandler {
                    }
                   }
             }
-            forward();
+            forward(event);
             finish();
       }
 
-      private void forward() {
+      private void forward(String event) {
             List<SObject> newScope = Trigger.new;
             for(IProcess process : processList) {
                   process.setNew(newScope, Trigger.newMap);
                   process.setOld(Trigger.old, Trigger.oldMap);
+                  process.setEvent(event);
                   try {
                    process.scope();
                    process.run();
