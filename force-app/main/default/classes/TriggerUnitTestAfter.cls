@@ -2,6 +2,8 @@ public class TriggerUnitTestAfter extends Process {
     public override IProcess run() {
         //call business logic here
         cloneItem();
+        
+        system.debug(event); //--> String result: afterInsert
     
         return this;
     }
