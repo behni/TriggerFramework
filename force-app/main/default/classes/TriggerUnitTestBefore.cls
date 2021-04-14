@@ -2,6 +2,8 @@ public class TriggerUnitTestBefore extends Process {
       public override IProcess run() {
             //call business logic here
             setBefore();
+          
+            system.debug(event); //--> String result: beforeInsert
       
             return this;
       }
