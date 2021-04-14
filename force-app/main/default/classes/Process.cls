@@ -4,6 +4,8 @@ public abstract with sharing class Process implements IProcess {
       
       public Map<ID, SObject> newMap{get;set;}
       public Map<ID, SObject> oldMap;
+    
+      public String event;
 
       public void setNew(List<SObject> scope, Map<Id, SObject> scopeMap) {
           this.newList = scope;
@@ -14,11 +16,16 @@ public abstract with sharing class Process implements IProcess {
       	  this.oldList = scope;
           this.oldMap = scopeMap;
       }
+    
+      public void setEvent(String event) {
+      	  this.event = event;  
+      }
+      
       public abstract IProcess run();
 
       public virtual void scope() {}
 
       public virtual List<SObject> returnScope() {
           return newList;
-      }
+	}
 }
