@@ -5,4 +5,5 @@ public interface IProcess {
 
     void setNew(List<SObject> scope, Map<Id, SObject> scopeMap);
     void setOld(List<SObject> scope, Map<Id, SObject> scopeMap);
+    void setEvent(String event);
 }
