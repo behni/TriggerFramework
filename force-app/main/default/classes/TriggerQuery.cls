@@ -16,6 +16,8 @@ public class TriggerQuery {
                               filter = 'Context__c = \'after\' AND isInsert__c = true';
                         } else if(eventName.containsIgnoreCase('update')) {
                               filter = 'Context__c = \'after\' AND isUpdate__c = true';
+                        } else if(eventName.containsIgnoreCase('undelete')) {
+                              filter = 'Context__c = \'after\' AND isUndelete__c = true';
                         } else if(eventName.containsIgnoreCase('delete')) {
                               filter = 'Context__c = \'after\' AND isDelete__c = true';
                         }
