@@ -1,9 +1,9 @@
 public abstract with sharing class Process implements IProcess {
       public List<SObject> newList{get;set;}
-      public List<SObject> oldList;
+      public List<SObject> oldList{get;set;}
       
       public Map<ID, SObject> newMap{get;set;}
-      public Map<ID, SObject> oldMap;
+      public Map<ID, SObject> oldMap{get;set;}
     
       public String event;
 
@@ -27,5 +27,17 @@ public abstract with sharing class Process implements IProcess {
 
       public virtual List<SObject> returnScope() {
           return newList;
-	}
+	  }
+    
+      public virtual Map<Id, SObject> returnScopeMap() {
+          return newMap;
+	  }
+    
+      public virtual List<SObject> returnOldScope() {
+          return oldList;
+	  }
+    
+      public virtual Map<Id, SObject> returnOldScopeMap() {
+          return oldMap;
+	  }
 }
