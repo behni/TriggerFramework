@@ -20,6 +20,7 @@ public class TriggerHandler {
       }
 
       public TriggerHandler(String sObjectType) {
+          system.debug(sObjectType);
             this.sObjectType = sObjectType;
             this.queryConfiguration = new TriggerQuery();
             this.processList = new List<IProcess>();
@@ -27,6 +28,7 @@ public class TriggerHandler {
 
       public void manage() {
           	String event = getEvent();
+            system.debug('Event: ' + event);
             List<TriggerDefinition__mdt> foundTriggers = queryConfiguration.getTrigger(sObjectType, event);
             if(foundTriggers != null) {
                   for(TriggerDefinition__mdt def : foundTriggers) {
@@ -47,9 +49,12 @@ public class TriggerHandler {
 
       private void forward(String event) {
             List<SObject> newScope = Trigger.new;
+            List<SObject> oldScope = Trigger.old;
+            Map<Id, SObject> oldMap = Trigger.oldMap;
+            Map<Id, SObject> newMap = Trigger.newMap;
             for(IProcess process : processList) {
-                  process.setNew(newScope, Trigger.newMap);
-                  process.setOld(Trigger.old, Trigger.oldMap);
+                  process.setNew(newScope, newMap);
+                  process.setOld(oldScope, oldMap);
                   process.setEvent(event);
                   try {
                    process.scope();
@@ -60,6 +65,9 @@ public class TriggerHandler {
                    errorHandler.push();
                   } finally {
                    newScope = process.returnScope();
+                   oldScope = process.returnOldScope();
+                   oldMap = process.returnOldScopeMap();
+                   newMap = process.returnScopeMap();
                   }
             }
       }
