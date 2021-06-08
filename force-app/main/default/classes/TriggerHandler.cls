@@ -1,4 +1,4 @@
-public class TriggerHandler {
+public without sharing class TriggerHandler {
       public enum TriggerEvent {
             beforeInsert,
             beforeUpdate,
