@@ -1,4 +1,4 @@
-public abstract with sharing class Process implements IProcess {
+public abstract without sharing class Process implements IProcess {
       public List<SObject> newList{get;set;}
       public List<SObject> oldList{get;set;}
       
